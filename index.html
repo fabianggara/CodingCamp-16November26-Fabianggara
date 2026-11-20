@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== THEME TOGGLE ===== -->
+  <button class="theme-toggle" id="themeToggle" title="Toggle Light / Dark Mode">
+    <span id="themeIcon">🌙</span>
+  </button>
+
+  <!-- ===== GREETING SECTION ===== -->
+  <section class="greeting-section" id="greetingSection">
+    <div class="greeting-inner">
+      <p class="date-time" id="dateTime"></p>
+      <h1 class="greeting-text" id="greetingText"></h1>
+
+      <!-- Custom Name Modal Trigger -->
+      <button class="btn btn-ghost btn-sm" id="openNameModal">✏️ Change Name</button>
+    </div>
+  </section>
+
+  <!-- ===== MAIN GRID ===== -->
+  <main class="dashboard-grid">
+
+    <!-- ── FOCUS TIMER ── -->
+    <section class="card timer-card">
+      <h2 class="card-title">⏱ Focus Timer</h2>
+
+      <div class="timer-display" id="timerDisplay">25:00</div>
+
+      <!-- Custom Duration Input (Challenge: Change Pomodoro Time) -->
+      <div class="timer-settings">
+        <label for="pomoDuration">Set Duration (min):</label>
+        <input type="number" id="pomoDuration" min="1" max="90" value="25" />
+        <button class="btn btn-sm" id="applyDuration">Apply</button>
+      </div>
+
+      <div class="timer-controls">
+        <button class="btn btn-primary" id="timerStart">▶ Start</button>
+        <button class="btn btn-secondary" id="timerStop">⏸ Stop</button>
+        <button class="btn btn-ghost" id="timerReset">↺ Reset</button>
+      </div>
+    </section>
+
+    <!-- ── TO-DO LIST ── -->
+    <section class="card todo-card">
+      <h2 class="card-title">✅ To-Do List</h2>
+
+      <div class="todo-input-row">
+        <input type="text" id="todoInput" placeholder="Add a new task..." />
+        <button class="btn btn-primary" id="todoAdd">Add</button>
+      </div>
+
+      <!-- Sort Controls (Challenge: Sort Tasks) -->
+      <div class="todo-sort-row">
+        <span class="sort-label">Sort:</span>
+        <button class="btn btn-xs sort-btn active" data-sort="default">Default</button>
+        <button class="btn btn-xs sort-btn" data-sort="az">A–Z</button>
+        <button class="btn btn-xs sort-btn" data-sort="done">Done Last</button>
+      </div>
+
+      <ul class="todo-list" id="todoList"></ul>
+
+      <p class="todo-empty" id="todoEmpty">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- ── QUICK LINKS ── -->
+    <section class="card links-card">
+      <h2 class="card-title">🔗 Quick Links</h2>
+
+      <div class="links-input-row">
+        <input type="text" id="linkName" placeholder="Label (e.g. GitHub)" />
+        <input type="url" id="linkUrl" placeholder="URL (e.g. https://github.com)" />
+        <button class="btn btn-primary" id="linkAdd">Add</button>
+      </div>
+
+      <div class="links-grid" id="linksGrid"></div>
+      <p class="links-empty" id="linksEmpty">No links saved yet.</p>
+    </section>
+
+  </main>
+
+  <!-- ===== MODALS ===== -->
+
+  <!-- Name Modal -->
+  <div class="modal-overlay hidden" id="nameModalOverlay">
+    <div class="modal">
+      <h3 class="modal-title">What's your name?</h3>
+      <input type="text" id="nameInput" placeholder="Enter your name..." maxlength="40" />
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="saveName">Save</button>
+        <button class="btn btn-ghost" id="cancelName">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div class="modal-overlay hidden" id="editModalOverlay">
+    <div class="modal">
+      <h3 class="modal-title">Edit Task</h3>
+      <input type="text" id="editTaskInput" maxlength="120" />
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="saveEditTask">Save</button>
+        <button class="btn btn-ghost" id="cancelEditTask">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Link Modal -->
+  <div class="modal-overlay hidden" id="editLinkModalOverlay">
+    <div class="modal">
+      <h3 class="modal-title">Edit Link</h3>
+      <input type="text" id="editLinkName" placeholder="Label" maxlength="40" />
+      <input type="url" id="editLinkUrl" placeholder="URL" />
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="saveEditLink">Save</button>
+        <button class="btn btn-ghost" id="cancelEditLink">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
